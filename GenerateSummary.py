@@ -1,3 +1,16 @@
+# Daychyi Ku
+# 8 Dec 2022
+# For Google classroom virtual classes attendance processing
+# Input: Google classroom meeting data files in .csv with columns=['First name','Last name', 'Email', 'Duration', 'Time joined', 'Time exited']
+# Output: Summary.csv
+# Remark: use 'Email' as key
+
+# Generate summary based on the Google meet csv files.
+# Place this file in the same directory of the csv files, and a Summary.csv will be generated.
+# Column names are the date from on the provided csv files.
+# Value 1 is given when participant attended at least half(0.5) of the total time (Time exited-Time joined), 0 otherwise. Threshold is controlled by changing variable (attended_time).
+# Entry without email is deleted from the record
+
 import os
 import numpy as np
 import pandas as pd
@@ -29,12 +42,6 @@ def process_df(df,filename,scale):
     
     df.drop(columns=["Time joined","Time exited","Duration_min"],axis=1,inplace=True)
     
-
-# Generate summary based on the Google meet csv files.
-# Place this file in the same directory of the csv files, and a Summary.csv will be generated.
-# Column names are the date from on the provided csv files.
-# Value 1 is given when participant attended at least half(0.5) of the total time (Time exited-Time joined), 0 otherwise. Threshold is controlled by changing variable (attended_time).
-# Entry without email is deleted from the record
 
 
 #list csv files only in current directory
